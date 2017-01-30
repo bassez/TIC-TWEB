@@ -21,12 +21,6 @@
         <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic"
               rel="stylesheet" type="text/css">
 
-        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-        <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-
         <!-- jQuery -->
         <script src="views/js/jquery.js"></script>
 
@@ -63,7 +57,6 @@
             <!-- /.navbar-collapse -->
         </div>
         <div id="add-box" style="
-    height: 400px;
     background-color: #f8f8f8;
     display: none;
 
@@ -74,8 +67,11 @@
                                 class="fa fa-cart-plus" aria-hidden="true"></i>
                         Ingrédient
                         <div style="display: flex; height: 83%">
-                        <form style="color: #777; font-size: 15px; align-items: center;
-                                justify-content: center; margin:auto"> Ajouter <input style="width: 15%"type="number"> <select><option>G</option></select>  de  <input style="width: 55%"type="text"></form>
+                            <form style="color: #777; font-size: 15px; align-items: center;
+                                justify-content: center; margin:auto"> Ajouter <input style="width: 15%" type="number">
+                                <select>
+                                    <option>G</option>
+                                </select> de <input style="width: 55%" type="text"></form>
                         </div>
                     </div>
                     <div style="marin:auto; height: 100%; align-items: center;display: flex;
@@ -105,7 +101,7 @@
             else {
                 $("#add-icon").removeClass("wheel");
                 $("#add-icon").addClass("wheel_reverse");
-                $("#add-box").animate({"height": "0px"}, 500, function() {
+                $("#add-box").animate({"height": "0px"}, 500, function () {
                     $("#add-box").css("display", "none");
                 });
 
@@ -136,14 +132,15 @@
                         </li>
                         <li style="color:#F47321"> |</li>
                         <li>
-                            <a href="#about">Github</a>
+                            <a href="https://github.com/bassez/TIC-TWEB">Github</a>
                         </li>
                         <li style="color:#F47321"> |</li>
                         <li>
-                            <a href="#contact">Contact</a>
+                            <a href="#">Contact</a>
                         </li>
                     </ul>
-                    <p class="copyright text-muted small">Copyright &copy; Your Company 2014. All Rights Reserved</p>
+                    <p class="copyright text-muted small">"Marmiton" Project - ETNA. Florian Bassez && Sylvain
+                        Lasjunies. All Rights Reserved</p>
                 </div>
             </div>
         </div>

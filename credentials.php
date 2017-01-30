@@ -16,7 +16,6 @@ class Mysql {
         $GLOBALS['user'] = " ";
         $GLOBALS['pass'] = " ";
         $GLOBALS['port'] = " ";
-        echo '<script language="Javascript">document.location.replace("views/pages/login.php");</script>';
     }
 
     public static function getInstance() {
