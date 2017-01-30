@@ -185,3 +185,35 @@ footer {
 p.copyright {
     margin: 15px 0 0;
 }
+
+@-webkit-keyframes spin-right {
+    from {
+        -webkit-transform: rotate(0deg);
+    }
+    to {
+        -webkit-transform: rotate(90deg);
+    }
+}
+
+@-webkit-keyframes spin-left {
+    from {
+        -webkit-transform: rotate(0deg);
+    }
+    to {
+        -webkit-transform: rotate(-90deg);
+    }
+}
+
+.wheel {
+    -webkit-animation-name: spin-right;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-duration: 0.3s;
+}
+
+.wheel_reverse {
+    -webkit-animation-name: spin-left;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-duration: 0.3s;
+}

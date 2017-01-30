@@ -18,35 +18,45 @@
 
         <!-- Custom Fonts -->
         <link href="views/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-        <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic"
+              rel="stylesheet" type="text/css">
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+
+        <!-- jQuery -->
+        <script src="views/js/jquery.js"></script>
+
+        <!-- Bootstrap Core JavaScript -->
+        <script src="views/js/bootstrap.min.js"></script>
         <![endif]-->
 
     </head>
-    <body style="background-color: #cccccc" >
+    <body style="background-color: #cccccc">
     <!-- Navigation -->
     <nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
         <div class="container topnav">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <button type="button" class="navbar-toggle" data-toggle="collapse"
+                        data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand logo" href="#"><i style="color: #F47321" class="fa fa-cutlery" aria-hidden="true"></i> armiton</a>
+                <a class="navbar-brand logo" href="#"><i style="color: #F47321" class="fa fa-cutlery"
+                                                         aria-hidden="true"></i> armiton</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li id="search-menu">
-                        <a href="#contact"><i style="color: #F47321" class="fa fa-plus" aria-hidden="true"></i> Nouvelle recette</a>
+                        <a id="menu_add" href="#contact"><i id="add-icon" style="color: #F47321" class="fa fa-plus"
+                                                            aria-hidden="true"></i> Nouvelle recette</a>
                     </li>
                 </ul>
             </div>
@@ -54,16 +64,37 @@
         </div>
         <div id="add-box" style="
     height: 400px;
-    position: absolute;
-    top: 50px;
-    right: 100px;
-    width: 700px;
-    z-index: 100000;
-    visibility: hidden;
     background-color: #f8f8f8;
-"></div>
+    display: none;
+
+">
+            <div class="container">Hello im the form</div>
+        </div>
         <!-- /.container -->
     </nav>
+
+    <script>
+        $("#menu_add").click(function () {
+            console.log("display true");
+            if ($("#add-box").css("display") == "none") {
+                $("#add-box").css("display", "block");
+                $("#add-icon").removeClass("wheel_reverse");
+                $("#add-icon").addClass("wheel");
+                $("#add-box").animate({"height": "400px"}, 500);
+            }
+
+            else {
+                $("#add-icon").removeClass("wheel");
+                $("#add-icon").addClass("wheel_reverse");
+                $("#add-box").animate({"height": "0px"}, 500, function() {
+                    $("#add-box").css("display", "none");
+                });
+
+
+            }
+
+
+        })</script>
 
     <div id="wrapper">
 
@@ -84,11 +115,11 @@
                         <li>
                             <a href="#">Accueil</a>
                         </li>
-                        <li style="color:#F47321"> | </li>
+                        <li style="color:#F47321"> |</li>
                         <li>
                             <a href="#about">Github</a>
                         </li>
-                        <li style="color:#F47321"> | </li>
+                        <li style="color:#F47321"> |</li>
                         <li>
                             <a href="#contact">Contact</a>
                         </li>
@@ -99,10 +130,6 @@
         </div>
     </footer>
 
-    <!-- jQuery -->
-    <script src="views/js/jquery.js"></script>
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="views/js/bootstrap.min.js"></script>
     </body>
     </html>

@@ -40,7 +40,13 @@
 
     <div class="container">
         <div class="row">
-            <h2>Voici notre superbe page d'accueil de ouf.</h2>
+            <row>
+		<div class="col-lg-12">
+			<div style="text-align: center" class="col-lg-4">waza</div>
+			<div style="text-align: center" class="col-lg-4">waza</div>
+			<div style="text-align: center" class="col-lg-4">waza</div>
+		</div>
+	    </row>
         </div>
 
     </div>
