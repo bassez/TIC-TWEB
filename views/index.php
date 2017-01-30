@@ -68,7 +68,26 @@
     display: none;
 
 ">
-            <div class="container">Hello im the form</div>
+            <div class="container">
+                <div class="row">
+                    <div style="text-align: center; font-size:25px; height: 100%; color:#F47321" class="col-lg-5"><i
+                                class="fa fa-cart-plus" aria-hidden="true"></i>
+                        Ingrédient
+                        <div style="display: flex; height: 83%">
+                        <form style="color: #777; font-size: 15px; align-items: center;
+                                justify-content: center; margin:auto"> Ajouter <input style="width: 15%"type="number"> <select><option>G</option></select>  de  <input style="width: 55%"type="text"></form>
+                        </div>
+                    </div>
+                    <div style="marin:auto; height: 100%; align-items: center;display: flex;
+                                justify-content: center; font-size: 25px; color:#F47321"
+                         class="col-lg-2"><i class="fa fa-share" aria-hidden="true"></i>
+                    </div>
+                    <div style="text-align: center; font-size:25px;height: 100%; color:#F47321" class="col-lg-5"><i
+                                class="fa fa-book" aria-hidden="true"></i>
+                        Recette
+                    </div>
+                </div>
+            </div>
         </div>
         <!-- /.container -->
     </nav>
