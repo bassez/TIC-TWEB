@@ -1,6 +1,53 @@
-<h3 style="text-align: center">Bienvenue sur Marmiton</h3>
-<p style="text-align: center">Version 1.0.0</p>
-<p style="text-align: center">Bassez Florian && Lasjunies Sylvain</p>
-<p style="text-align: center"><a href="https://github.com/bassez/TIC-TWEB"><i class="fa fa-github"></i> Github
-        Project</a></p>
-</br>
+
+
+
+<!-- Header -->
+<a name="about"></a>
+<div class="intro-header">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="intro-message">
+                    <h1>Recherchez une recette ... </h1>
+
+                    <input type="text" placeholder="Parmis tout notre stock ..." style="
+    background: transparent;
+    border: none;
+    width: 400px;
+    height: 3em;
+">
+                    <hr style="margin-top:0px" class="intro-divider">
+                    <ul class="list-inline intro-social-buttons">
+
+                        <li>
+                            <a  class="btn btn-default btn-lg"><i class="fa fa-search"></i> <span class="network-name">Chercher !</span></a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- /.container -->
+
+</div>
+
+
+<a  name="services"></a>
+<div style="padding-top: 10px; color: #777" class="content-section-a">
+
+    <div class="container">
+        <div class="row">
+            <h2>Voici notre superbe page d'accueil de ouf.</h2>
+        </div>
+
+    </div>
+    <!-- /.container -->
+
+</div>
+<!-- /.content-section-a -->
+
+</div>
+<!-- /.banner -->
