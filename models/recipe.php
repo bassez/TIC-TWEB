@@ -3,6 +3,60 @@
 class Recipe
 {
     /**
+     * Recipe constructor.
+     * @param $_name
+     * @param $_authorName
+     * @param $_authorEmail
+     */
+    public function __construct($_name, $_authorName, $_authorEmail)
+    {
+        $this->_id = null;
+        $this->_name = $_name;
+        $this->_authorName = $_authorName;
+        $this->_authorEmail = $_authorEmail;
+        $this->_creationDate = null;
+        $this->_pictureId = null;
+    }
+
+    public static function  getAll () {
+        $mysql = Mysql::getInstance();
+
+        $req = $mysql->query("SELECT * FROM Recipe ");
+
+        $list = [];
+        foreach($req->fetchAll() as $recipe) {
+            array_push($list, new Recipe($recipe["id"], $recipe["name"], $recipe["authorName"], $recipe["authorEmail"], $recipe["creationDate"], $recipe["pictureId"]));
+        }
+        return $list;
+    }
+
+    public function  create () {
+        $mysql = Mysql::getInstance();
+        $sql = "INSERT INTO Recipe (name, authorName, authorEmail) VALUES ('$this->_name', '$this->_authorName', '$this->_authorEmail')";
+        $response = null;
+        try {
+            $res = $mysql->exec($sql);
+            $response = ["success", "Succes", "Recipe successfully created !"];
+        }
+        catch( PDOException $Exception ) {
+            $response = ["danger", "Error", "Error during recipe creation :( <br> MySQL said : " . $Exception->getMessage( )];
+        }
+        return $response;
+    }
+
+    public function  delete () {
+
+    }
+
+    public function update () {
+
+    }
+
+    public static function compareRecipes($a, $b) {
+
+    }
+
+    /**
      * @return mixed
      */
     public function getId()
