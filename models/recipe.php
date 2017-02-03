@@ -16,6 +16,7 @@ class Recipe
         $this->_authorEmail = $_authorEmail;
         $this->_creationDate = null;
         $this->_pictureId = null;
+        $this->_ingredients = [];
     }
 
     public static function  getAll () {
@@ -36,7 +37,12 @@ class Recipe
         $response = null;
         try {
             $res = $mysql->exec($sql);
-            $response = ["success", "Succes", "Recipe successfully created !"];
+            $this->_id = $mysql->lastInsertId();
+            foreach ($this->_ingredients as $ingredient) {
+                $ingredient->setRecipeId($this->_id);
+                var_dump($ingredient->create());
+            }
+            $response = ["success", "Succes", "Recipe $this->_id successfully created !"];
         }
         catch( PDOException $Exception ) {
             $response = ["danger", "Error", "Error during recipe creation :( <br> MySQL said : " . $Exception->getMessage( )];
@@ -164,11 +170,22 @@ class Recipe
         return $this;
     }
 
+    /**
+     * @param Ingredient $ingredient
+     * @return Recipe
+     */
+    public function addIngredient($ingredient)
+    {
+        array_push($this->_ingredients, $ingredient);
+        return $this;
+    }
+
     private $_id;
     private $_name;
     private $_authorName;
     private $_authorEmail;
     private $_creationDate;
     private $_pictureId;
+    private $_ingredients;
 
 }

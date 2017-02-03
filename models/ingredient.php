@@ -9,13 +9,13 @@ class Ingredient
      * @param $_unit
      * @param $_recipeId
      */
-    public function __construct($_name, $_quantity, $_unit, $_recipeId)
+    public function __construct($_name, $_quantity, $_unit)
     {
-        $this->id = null;
+        $this->_id = null;
         $this->_name = $_name;
         $this->_quantity = $_quantity;
         $this->_unit = $_unit;
-        $this->_recipeId = $_recipeId;
+        $this->_recipeId = null;
     }
 
     public static function  getAll () {
@@ -32,11 +32,12 @@ class Ingredient
 
     public function  create () {
         $mysql = Mysql::getInstance();
-        $sql = "INSERT INTO Ingredient (name, quantity, authorEmail) VALUES ('$this->_name', '$this->_authorName', '$this->_authorEmail')";
+        $sql = "INSERT INTO Ingredient (name, quantity, unity, recipeId) VALUES ('$this->_name', '$this->_quantity', '$this->_unit', '$this->_recipeId')";
         $response = null;
         try {
             $res = $mysql->exec($sql);
-            $response = ["success", "Succes", "Ingredient successfully created !"];
+            $this->_id = $mysql->lastInsertId();
+            $response = ["success", "Succes", "Ingredient $this->_id successfully created !"];
         }
         catch( PDOException $Exception ) {
             $response = ["danger", "Error", "Error during ingredient creation :( <br> MySQL said : " . $Exception->getMessage( )];

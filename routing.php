@@ -6,6 +6,9 @@ function call($controller, $action) {
         case 'pages':
             $controller = new PagesController();
             break;
+        case 'recipe':
+            $controller = new RecipeController();
+            break;
     }
 
     $controller->{ $action }();
@@ -13,6 +16,7 @@ function call($controller, $action) {
 
 $controllers = array(
     'pages' => ['home', 'error'],
+    'recipe' => ['create']
 );
 
 if (array_key_exists($controller, $controllers)) {
