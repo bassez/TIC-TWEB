@@ -67,16 +67,65 @@
                                 class="fa fa-cart-plus" aria-hidden="true"></i>
                         Ingrédient
                         <div style="display: flex; height: 83%">
-                            <form style="color: #777; font-size: 15px; align-items: center;
-                                justify-content: center; margin:auto"> Ajouter <input style="width: 15%" type="number">
-                                <select>
-                                    <option>G</option>
-                                </select> de <input style="width: 55%" type="text"></form>
+                        
+
+
+                            <form action="" method="post" style="color: #777; font-size: 15px; align-items: center;
+                                justify-content: center; margin:auto; margin-top: 25px;height: 100%;">
+                                <div id="form_recette">
+                                    
+
+
+                                    <div class="add_input">
+                                        Auteur<input id="author" name="author[name]" type="text">
+                                        Email<input id="email" name="author[email]" type="text"><br>
+                                        recette<input id="recette" name="recipe[name]" type="text">
+                                        
+                                            <div class="add_title">
+                                                    <p>Ajouter</p> <i id="add_ingr" class="fa fa-plus-square-o" aria-hidden="true"></i>
+                                            </div>
+                                        <div id="ingredient">
+                                            <div class="add_input0">
+                                                <input id="quantity" name="ingredients[0][quantity]" style="width: 15%;margin-right:5px;" type="number">
+                                                <select id="unite" name="ingredients[0][unite]" style="margin-right:5px;">
+                                                    <option value="Grammes">gramme(s)</option>
+                                                    <option value="Kilogrammes">kilogramme(s)</option>
+                                                    <option value="Millilitres">millilitre(s)</option>
+                                                    <option value="Litres">litre(s)</option>
+                                                    <option value="Cafe">cuillère(s) à café</option>
+                                                    <option value="Soupe">cuillère(s) à soupe</option>
+                                                    <option value="unite">Unité</option>
+                                                </select> de 
+
+                                                <input id="name" name="ingredients[0][name]" style="margin-left:5px;width: 38%" type="text">
+                                            </div>
+                                        </div>
+                                            <div class="add_title">
+                                                <p>Ajouter</p> <i id="add_tag" class="fa fa-plus-square-o" aria-hidden="true"></i>
+                                            </div>
+                                        <div id="tags">
+                                            <div class="add_tag0">
+                                                <select id="tagtype" name="tags[0][type]" style="margin-right:5px;">
+                                                        <option value="Gout">Gout</option>
+                                                        <option value="Orgigin">Origine</option>
+                                                        <option value="Type">Type</option>
+                                                </select>
+                                                <input id="tagname" name="tags[0][name]" style="margin-left:5px;width: 38%" type="text">
+                                            </div>
+                                        </div>
+                                    </div>
+                                
+
+
+                                </div>
+                            </form>
+                        
+                            
                         </div>
                     </div>
-                    <div style="marin:auto; height: 100%; align-items: center;display: flex;
+                    <div style="margin:auto; height: 100%; align-items: center;display: flex;
                                 justify-content: center; font-size: 25px; color:#F47321"
-                         class="col-lg-2"><i class="fa fa-share" aria-hidden="true"></i>
+                         class="col-lg-2"><i id="send_res" class="fa fa-share" aria-hidden="true"></i>
                     </div>
                     <div style="text-align: center; font-size:25px;height: 100%; color:#F47321" class="col-lg-5"><i
                                 class="fa fa-book" aria-hidden="true"></i>
@@ -89,6 +138,11 @@
     </nav>
 
     <script>
+        var i =0;
+        var y =0;
+        var x =0;
+        var z =0;
+
         $("#menu_add").click(function () {
             console.log("display true");
             if ($("#add-box").css("display") == "none") {
@@ -107,9 +161,49 @@
 
 
             }
+        })
+
+        $("#send_res").click(function () {
+            // console.log("==============================");
+            // var recette = $("#form_recette")
+            // var i = 0;
+
+            // recette.children(#)
+            // for (data of datas){
+
+            // }
+        })
+        
+        $("#add_ingr").click(function () {
+            
+
+            var clone = $('.add_input'+ i).clone();
+            i++;
+            y= i-1;
+            clone.children("#name").attr("name", "ingredients[" + i + "][name]");
+            clone.children("#quantity").attr("name", "ingredients[" + i + "][quantity]");
+            clone.children("#unite").attr("name", "ingredients[" + i + "][unite]");
+            clone.attr("class", "add_input"+ i);
+            clone.insertAfter($('.add_input' +y));
 
 
-        })</script>
+        })
+
+         $("#add_tag").click(function () {
+            
+            var clone = $('.add_tag'+ x).clone();
+            x++;
+            z= x-1;
+            clone.children("#tagtype").attr("name", "tags[" + x + "][type]");
+            clone.children("#tagname").attr("name", "tags[" + x + "][name]");
+            clone.attr("class", "add_tag"+ x);
+            clone.insertAfter($('.add_tag' +z));
+
+
+        })
+
+
+    </script>
 
     <div id="wrapper">
 
