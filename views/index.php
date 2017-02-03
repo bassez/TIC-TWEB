@@ -70,7 +70,7 @@
                         
 
 
-                            <form action="" method="post" style="color: #777; font-size: 15px; align-items: center;
+                            <form method="POST" action="index.php?controller=recipe&action=create" style="color: #777; font-size: 15px; align-items: center;
                                 justify-content: center; margin:auto; margin-top: 25px;height: 100%;">
                                 <div id="form_recette">
                                     
@@ -118,6 +118,7 @@
 
 
                                 </div>
+                                <button class="btn btn-primary" style="background-color: #F47321; border-color: #c1571b;"><i id="send_res" class="fa fa-share" aria-hidden="true"></i></button>
                             </form>
                         
                             
@@ -125,7 +126,7 @@
                     </div>
                     <div style="margin:auto; height: 100%; align-items: center;display: flex;
                                 justify-content: center; font-size: 25px; color:#F47321"
-                         class="col-lg-2"><i id="send_res" class="fa fa-share" aria-hidden="true"></i>
+                         class="col-lg-2">
                     </div>
                     <div style="text-align: center; font-size:25px;height: 100%; color:#F47321" class="col-lg-5"><i
                                 class="fa fa-book" aria-hidden="true"></i>

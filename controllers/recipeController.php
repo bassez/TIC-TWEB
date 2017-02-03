@@ -18,7 +18,7 @@ class recipeController
 
             foreach ($_POST["ingredients"] as $ingredient) {
                 $hey->addIngredient(
-                    new Ingredient($ingredient["name"], $ingredient["quantity"], $ingredient["unit"]));
+                    new Ingredient($ingredient["name"], $ingredient["quantity"], $ingredient["unite"]));
             }
 
             var_dump($hey->create());

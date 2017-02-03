@@ -2,7 +2,7 @@
 $GLOBALS['hote'] = "localhost";
 $GLOBALS['port'] = "3306";
 $GLOBALS['user'] = "root";
-$GLOBALS['pass']= "root";
+$GLOBALS['pass']= "";
 $GLOBALS["db_name"] = "marmiton";
 
 class Mysql {
