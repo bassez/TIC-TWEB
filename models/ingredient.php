@@ -32,7 +32,7 @@ class Ingredient
 
     public function  create () {
         $mysql = Mysql::getInstance();
-        $sql = "INSERT INTO Ingredient (name, quantity, unity, recipeId) VALUES ('$this->_name', '$this->_quantity', '$this->_unit', '$this->_recipeId')";
+        $sql = "INSERT INTO Ingredient (i_name, i_quantity, i_unity, recipeId) VALUES ('$this->_name', '$this->_quantity', '$this->_unit', '$this->_recipeId')";
         $response = null;
         try {
             $res = $mysql->exec($sql);

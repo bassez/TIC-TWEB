@@ -59,7 +59,6 @@ class Mail
             echo 'Votre message a bien été envoyé ';
         else
             print_r( "Votre message n'a pas pu être envoyé : " );
-        print_r(error_get_last());
 
     }
 

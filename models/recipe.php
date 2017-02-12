@@ -22,11 +22,23 @@ class Recipe
     public static function  getAll () {
         $mysql = Mysql::getInstance();
 
-        $req = $mysql->query("SELECT * FROM Recipe ");
+        $req = $mysql->query("SELECT * FROM Recipe;");
+
 
         $list = [];
         foreach($req->fetchAll() as $recipe) {
-            array_push($list, new Recipe($recipe["id"], $recipe["name"], $recipe["authorName"], $recipe["authorEmail"], $recipe["creationDate"], $recipe["pictureId"]));
+            $rid = $recipe["id"];
+            $ireq = $mysql->query("SELECT * FROM Ingredient WHERE recipeId='$rid';");
+            $recipe = new Recipe($recipe["name"], $recipe["authorName"], $recipe["authorEmail"]);
+            $recipe->setId($rid);
+            foreach ($ireq->fetchAll() as $ingredient) {
+                echo "I";
+                $in = new Ingredient($ingredient["name"], $ingredient["quantity"], $ingredient["unity"]);
+                $in->setId($ingredient["id"])->setRecipeId($ingredient["recipeId"]);
+                $recipe->addIngredient($in);
+            }
+
+            array_push($list, $recipe);
         }
         return $list;
     }
@@ -58,7 +70,7 @@ class Recipe
 
     }
 
-    public static function compareRecipes($a, $b) {
+    public static function compare($a, $b) {
 
     }
 
@@ -180,6 +192,14 @@ class Recipe
         return $this;
     }
 
+    /**
+     * @return array
+     */
+    public function getIngredients()
+    {
+        return $this->_ingredients;
+    }
+
     private $_id;
     private $_name;
     private $_authorName;
@@ -187,5 +207,4 @@ class Recipe
     private $_creationDate;
     private $_pictureId;
     private $_ingredients;
-
 }

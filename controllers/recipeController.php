@@ -16,12 +16,12 @@ class recipeController
                     new Ingredient($ingredient["name"], $ingredient["quantity"], $ingredient["unite"]));
             }
 
-            var_dump($hey->create());
             $mail = new Mail($_POST["author"]["email"],
                              "megasyl20@gmail.com",
                              "Recette acceptée !!",
                              "Félicitations, votre recette est desormais accessible à tous sur notre site Maremiton ! <br>A bientôt !");
             $mail->send();
+
             require_once('views/pages/home.php');
         }
         else
