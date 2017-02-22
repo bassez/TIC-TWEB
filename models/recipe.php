@@ -35,14 +35,23 @@ class Recipe
         $i = false;
         foreach ($ingredients_parsed as $ingredient) {
             if ($i)
-                $sql .= " AND ";
+                $sql .= " OR ";
             $i = true;
             $sql .= " name LIKE '%" . $ingredient. "%'";
         }
         $sql .= ";";
         echo $sql;
         $req = $mysql->query($sql);
-        self::fetchDatas($mysql, $req);
+
+        $list = [];
+        foreach ($req->fetchAll() as $ingr) {
+            echo "FOUND AN INGREDIENT, GETTING RECIPE";
+            $ingredient = self::findById($ingr["recipeId"]);
+            if (!in_array($ingredient, $list))
+            array_push($list, $ingredient);
+        }
+
+        return $list;
 
     }
 

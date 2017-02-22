@@ -12,8 +12,8 @@ class searchController
         require_once ('models/recipe.php');
         require_once ('models/ingredient.php');
 
-        $name_results = Recipe::getAll();
-        //$name_results = Recipe::findByIngredient("chocolat");
+        //$name_results = Recipe::getAll();
+        $name_results = Recipe::findByIngredient("tomate, zizi");
 
         require_once('views/pages/search.php');
     }
