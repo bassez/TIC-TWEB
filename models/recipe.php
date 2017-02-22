@@ -66,7 +66,7 @@ class Recipe
             $new_recipe->addIngredient($in);
         }
 
-        return $recipe;
+        return $new_recipe;
     }
 
     public static function getById ($id) {
