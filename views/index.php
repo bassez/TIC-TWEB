@@ -149,7 +149,7 @@
 
                                 <div id="etape">
                                     <div class="col-lg-12" style="height: 8%;color: dimgrey">
-                                        <h5 style="margin: 0;margin-left: 3px;">Etape 1</h5>
+                                        <h5 style="margin: 0;margin-left: 3px;">Etapes</h5>
                                     </div>
                                     <div class="col-lg-12" style="height: 36%;margin-bottom: 15px">
                                         <textarea name="step[0]value" class="form-control" rows="5" id="comment" style="resize: none;margin-bottom: 15px"></textarea>
@@ -167,28 +167,33 @@
                             <div class="col-lg-12" style="margin-top: 20px">
                                 <div class="col-lg-6">
                                     <div class="col-lg-12 input-group">
-                                        <input type="text" class="form-control" placeholder="Auteur">
+                                        <input name="author[name]" type="text" class="form-control" placeholder="Auteur">
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="col-lg-12 input-group">
-                                        <input type="text" class="form-control" placeholder="Nom de la recette">
+                                        <input name="recipe[name]" type="text" class="form-control" placeholder="Nom de la recette">
                                     </div>
                                 </div>
 
                                 <div class="col-lg-12" style="margin-top: 10px;margin-bottom: 10px">
                                     <div class="col-lg-12 input-group">
-                                        <input type="text" class="form-control" placeholder="Email">
+                                        <input name="Author[mail]" type="text" class="form-control" placeholder="Email">
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="col-lg-12 input-group">
-                                        <input type="text" class="form-control" placeholder="Difficulté">
+                                        <input name="recipe[difficulty] "type="text" class="form-control" placeholder="Difficulté">
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="col-lg-12 input-group">
-                                        <input type="number" class="form-control" placeholder="Tps en minutes">
+                                        <input name="recipe[time]" type="number" class="form-control" placeholder="Tps en minutes">
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="col-lg-12 input-group">
+                                        <input name="recipe[picture]" type="file" class="form-control" placeholder="Photo">
                                     </div>
                                 </div>
                             </div>
@@ -221,14 +226,17 @@
                                         </div>
                                         <table id="table_tag" class="table">
                                             <tbody>
-                                            <div id="table_tag_row" style="display: none">
-                                                <input name="tags[0][type]" id="table_tag_type" type="text" style="margin-left: 20px;border: none;width: 100px" readonly>
-                                                <input name="tags[0][name]"id="table_tag_name" type="text" style="border: none;width: 260px" readonly>
-                                            </div>
+                                                <div id="table_tag_row" style="display: none">
+                                                    <input name="tags[0][type]" id="table_tag_type" type="text" style="margin-left: 20px;border: none;width: 100px" readonly>
+                                                    <input name="tags[0][name]"id="table_tag_name" type="text" style="border: none;width: 260px" readonly>
+                                                </div>
                                             </tbody>
                                         </table>
                                     </div>
 
+                                </div>
+                                <div class="col-lg-3">
+                                    <input class="form-control" type="submit"><!-- onclick="--><?// create_recipe(); ?><!--"-->
                                 </div>
 
                             </div>
@@ -302,13 +310,12 @@
         $("#add_step").click(function () {
             console.log("==============================1");
 
-
-
             var tag  = $("#comment").clone();
+            tag.val("");
             if(z == 0)
-                tag.attr('id', '#comment0').insertAfter($('#comment'));
+                tag.attr('id', '#comment0').attr('name', 'step[' + 1 + ']value').insertAfter($('#comment'));
             else
-                $("#comment").parent().append(tag.attr('id', '#comment' +z));//.insertAfter($('#comment'+ (z-1)));
+                $("#comment").parent().append(tag.attr('id', '#comment' +z).attr('name', 'step[' + z + ']value'));//.insertAfter($('#comment'+ (z-1)));
             z++;
         })
 
