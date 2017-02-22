@@ -11,10 +11,8 @@ class recipeController
         print_r($_FILES);
         $uploadfile = $GLOBALS["uploaddir"] . basename($_FILES["recipe_pic"]["name"]);
 
-
         if (isset($_POST["ingredients"]) && isset($_POST["author"]) && isset($_POST["recipe"])) {
-
-            $hey = new Recipe($_POST["recipe"]["name"], $_POST["author"]["name"], $_POST["author"]["mail"]);
+            $hey = new Recipe($_POST["recipe"]["name"], $_POST["author"]["name"], $_POST["author"]["mail"], $_POST["recipe"]["time"], $_POST["recipe"]["difficulty"]);
 
             if (isset($uploadfile)) {
                 move_uploaded_file($_FILES["recipe_pic"]["tmp_name"], $uploadfile);
@@ -40,6 +38,11 @@ class recipeController
 
     public function details()
     {
+        require_once('models/recipe.php');
+        require_once('models/ingredient.php');
+
+        $datas = Recipe::findById($_GET["id"]);
+        print_r($datas);
         require_once('views/pages/details.php');
     }
 }

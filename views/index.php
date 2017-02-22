@@ -14,7 +14,9 @@
         <link href="views/css/bootstrap.min.css" rel="stylesheet">
 
         <!-- Custom CSS -->
+        <link href="views/css/search.css" rel="stylesheet">
         <link href="views/css/landing-page.css" rel="stylesheet">
+
 
         <!-- bootsrap-select CSS -->
         <link href="views/css/bootstrap-select.min.css" rel="stylesheet">
@@ -32,6 +34,10 @@
 
         <!-- Bootstrap Core JavaScript -->
         <script src="views/js/bootstrap.min.js"></script>
+
+        <script src="views/js/jquery.barrating.min.js"></script>
+        <link rel="stylesheet" href="views/css/fontawesome-stars.css">
+
         <![endif]-->
 
     </head>
@@ -279,7 +285,7 @@
         $("#send_ingredient").click(function () {
 
             var quant = $("#quantity_ingr").val();
-            var unit  = $("#unit_ingr").val() + " de";
+            var unit  = $("#unit_ingr").val();
             var name  = $("#name_ingr").val();
 
             var table_ingr_clone = $('#table_ingr_row').clone();
