@@ -27,4 +27,8 @@ class recipeController
         else
         require_once ('views/pages/error.php');
     }
+
+    public function details() {
+        require_once('views/pages/details.php');
+    }
 }

@@ -9,6 +9,9 @@ function call($controller, $action) {
         case 'recipe':
             $controller = new RecipeController();
             break;
+        case 'search':
+            $controller = new SearchController();
+            break;
     }
 
     $controller->{ $action }();
@@ -16,7 +19,8 @@ function call($controller, $action) {
 
 $controllers = array(
     'pages' => ['home', 'error'],
-    'recipe' => ['create']
+    'recipe' => ['create', 'details'],
+    'search' => ['search']
 );
 
 if (array_key_exists($controller, $controllers)) {
