@@ -224,6 +224,7 @@ p.copyright {
 .add_title p{
     width: 50px;
     margin-left: auto;
+    margin-right: auto;
 
 }
 .add_title i{
@@ -234,7 +235,7 @@ p.copyright {
     color: #F47321;
 }
 #ingredient{
-    height: 135px;
+    height: 70px;
     overflow: scroll;
     overflow: overlay;
 }
@@ -242,4 +243,10 @@ p.copyright {
     height: 90px;
     overflow: scroll;
     overflow: overlay;
+}
+
+#create{
+    width: 1400px;
+    margin-left: auto;
+    margin-right:auto;
 }
