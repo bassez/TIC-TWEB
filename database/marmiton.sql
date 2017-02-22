@@ -1,20 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.4.1deb2ubuntu2
+-- version 4.4.10
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: Feb 03, 2017 at 02:30 AM
--- Server version: 5.7.17-0ubuntu0.16.04.1
--- PHP Version: 7.0.13-0ubuntu0.16.04.1
+-- Host: localhost:3306
+-- Generation Time: Feb 22, 2017 at 09:19 PM
+-- Server version: 5.5.42
+-- PHP Version: 7.0.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Database: `marmiton`
@@ -46,7 +40,9 @@ CREATE TABLE `Recipe` (
   `authorName` varchar(40) NOT NULL,
   `authorEmail` varchar(100) NOT NULL,
   `creationDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `pictureId` varchar(100) NOT NULL DEFAULT 'default_picture'
+  `pictureId` varchar(100) NOT NULL DEFAULT 'default_picture',
+  `cooking_time` int(11) NOT NULL DEFAULT '0',
+  `difficulty` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -79,6 +75,3 @@ ALTER TABLE `Ingredient`
 --
 ALTER TABLE `Recipe`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

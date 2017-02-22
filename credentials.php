@@ -4,6 +4,8 @@ $GLOBALS['port'] = "3306";
 $GLOBALS['user'] = "root";
 $GLOBALS['pass']= "";
 $GLOBALS["db_name"] = "marmiton";
+$GLOBALS["uploaddir"] = 'uploads/';
+
 
 class Mysql {
     private static $_instance = NULL;
