@@ -2,33 +2,44 @@
 
 class recipeController
 {
-    public function create() {
-        require_once ('models/recipe.php');
-        require_once ('models/ingredient.php');
-        require_once ('Utils/Mail.php');
+    public function create()
+    {
+        require_once('models/recipe.php');
+        require_once('models/ingredient.php');
+        require_once('Utils/Mail.php');
+        echo "<br>";
+        print_r($_FILES);
+        $uploadfile = $GLOBALS["uploaddir"] . basename($_FILES["recipe_pic"]["name"]);
 
-        if (isset($_POST["ingredients"]) && isset($_POST["author"]) && isset($_POST["recipe"]))  {
 
-            $hey = new Recipe($_POST["recipe"]["name"], $_POST["author"]["name"], $_POST["author"]["email"]);
+        if (isset($_POST["ingredients"]) && isset($_POST["author"]) && isset($_POST["recipe"])) {
+
+            $hey = new Recipe($_POST["recipe"]["name"], $_POST["author"]["name"], $_POST["author"]["mail"]);
+
+            if (isset($uploadfile)) {
+                move_uploaded_file($_FILES["recipe_pic"]["tmp_name"], $uploadfile);
+                $hey->setPictureId(basename($_FILES["recipe_pic"]["name"]));
+            }
 
             foreach ($_POST["ingredients"] as $ingredient) {
                 $hey->addIngredient(
-                    new Ingredient($ingredient["name"], $ingredient["quantity"], $ingredient["unite"]));
+                    new Ingredient($ingredient["name"], $ingredient["quantity"], $ingredient["unit"]));
             }
 
-            $mail = new Mail($_POST["author"]["email"],
-                             "megasyl20@gmail.com",
-                             "Recette acceptée !!",
-                             "Félicitations, votre recette est desormais accessible à tous sur notre site Maremiton ! <br>A bientôt !");
+            $hey->create();
+            $mail = new Mail($_POST["author"]["mail"],
+                "megasyl20@gmail.com",
+                "Recette acceptée !!",
+                "Félicitations, votre recette est desormais accessible à tous sur notre site Maremiton ! <br>A bientôt !");
             $mail->send();
 
             require_once('views/pages/home.php');
-        }
-        else
-        require_once ('views/pages/error.php');
+        } else
+            require_once('views/pages/error.php');
     }
 
-    public function details() {
+    public function details()
+    {
         require_once('views/pages/details.php');
     }
 }

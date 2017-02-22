@@ -88,19 +88,19 @@
                     <div class="col-lg-12" style="height:90%;display: flex;">
 
 
-                        <form method="POST" action="index.php?controller=recipe&action=create">
+                        <form method="POST" enctype="multipart/form-data" action="index.php?controller=recipe&action=create">
 <!--                         COMPOSER COMPOSER COMPOSER COMPOSER COMPOSER COMPOSER COMPOSER COMPOSER COMPOSER COMPOSER COMPOSER COMPOSER-->
                         <div class="col-lg-4" style="height:100%;padding: 0;">
                             <div class="col-lg-12" style="color: #f47321;height: 40%;padding-top: 10%">
                                 <h3 style="margin-left: auto;margin-right: auto;width: 100%;">
                                     <i style="margin-left: 31%" class="fa fa-cart-plus" aria-hidden="true"></i> Ingrédients</h3>
-                                <div class="add_input0" style="display: flex">
-                                    <div id="quantity" name="ingredients[0][quantity]" class="col-lg-3" style="float: none !important; padding-left: 5px;padding-right: 0px;">
+                                <div  style="display: flex">
+                                    <div id="quantity" class="col-lg-3" style="float: none !important; padding-left: 5px;padding-right: 0px;">
                                         <div class="input-group">
                                             <input id="quantity_ingr" type="number" class="form-control" placeholder="0">
                                         </div>
                                     </div>
-                                    <select id="unit_ingr" name="tags[0][type]" class="selectpicker">
+                                    <select id="unit_ingr"  class="selectpicker">
                                         <option value="Grammes">gramme(s)</option>
                                         <option value="Kilogrammes">kilogramme(s)</option>
                                         <option value="Millilitres">millilitre(s)</option>
@@ -109,7 +109,7 @@
                                         <option value="cuillère(s) à soupe">cuillère(s) à soupe</option>
                                         <option value="Unite">unité</option> de
                                     </select>
-                                    <div id="name" name="ingredients[0][name]" class="col-lg-8" style="float: none !important; padding-left: 5px;padding-right: 0px;">
+                                    <div id="name"  class="col-lg-8" style="float: none !important; padding-left: 5px;padding-right: 0px;">
                                         <div class="input-group">
                                             <input id="name_ingr" type="text" class="form-control" placeholder="Ingrédient">
                                             <span class="input-group-btn">
@@ -124,7 +124,7 @@
                                 <h3 style="margin-left: auto;margin-right: auto;width: 100%;">
                                     <i style="margin-left: 31%" class="fa fa-hashtag" aria-hidden="true"></i> Mots-clés</h3>
                                 <div class="add_tag0" style="display: flex">
-                                    <select id="type_tag" name="tags[0][type]" class="selectpicker">
+                                    <select id="type_tag" class="selectpicker">
                                         <option value="Goût">Goût</option>
                                         <option value="Origine">Origine</option>
                                         <option value="Type">Type</option>
@@ -178,7 +178,7 @@
 
                                 <div class="col-lg-12" style="margin-top: 10px;margin-bottom: 10px">
                                     <div class="col-lg-12 input-group">
-                                        <input name="Author[mail]" type="text" class="form-control" placeholder="Email">
+                                        <input name="author[mail]" type="text" class="form-control" placeholder="Email">
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
@@ -193,7 +193,7 @@
                                 </div>
                                 <div class="col-lg-12">
                                     <div class="col-lg-12 input-group">
-                                        <input name="recipe[picture]" type="file" class="form-control" placeholder="Photo">
+                                        <input name="recipe_pic" type="file" class="form-control" placeholder="Photo">
                                     </div>
                                 </div>
                             </div>
@@ -209,9 +209,9 @@
                                             <table id="table_ingr" class="table">
                                                 <tbody>
                                                 <div id="table_ingr_row" style="display: none">
-                                                    <input name="ingredients[0][quantity]" id="table_ingr_quant" type="text" style="padding-left: 35px;border: none;width: 100px" readonly>
-                                                    <input name="ingredients[0][unit]"     id="table_ingr_unit"  type="text" style="border: none;width: 150px" readonly>
-                                                    <input name="ingredients[0][unit]"     id="table_ingr_name"  type="text" style="border: none;width: 100px" readonly>
+                                                    <input name="" id="table_ingr_quant" type="text" style="padding-left: 35px;border: none;width: 100px" readonly>
+                                                    <input name="" id="table_ingr_unit"  type="text" style="border: none;width: 150px" readonly>
+                                                    <input name="" id="table_ingr_name"  type="text" style="border: none;width: 100px" readonly>
                                                 </div>
                                                 </tbody>
                                             </table>
@@ -279,13 +279,14 @@
         $("#send_ingredient").click(function () {
 
             var quant = $("#quantity_ingr").val();
-            var unit = $("#unit_ingr").val() + " de";
+            var unit  = $("#unit_ingr").val() + " de";
             var name  = $("#name_ingr").val();
 
             var table_ingr_clone = $('#table_ingr_row').clone();
-            table_ingr_clone.children("#table_ingr_quant").val(quant).attr('name', 'ingredients[' + i + ']quantity');
-            table_ingr_clone.children("#table_ingr_unit").val(unit).attr('name', 'ingredients[' + i + ']unit');
-            table_ingr_clone.children("#table_ingr_name").val(name).attr('name', 'ingredients[' + i + ']name');
+            table_ingr_clone.children("#table_ingr_quant").val(quant).attr('name', 'ingredients[' + i + '][quantity]');
+            table_ingr_clone.children("#table_ingr_unit").val(unit).attr('name', 'ingredients[' + i + '][unit]');
+            table_ingr_clone.children("#table_ingr_name").val(name).attr('name', 'ingredients[' + i + '][name]');
+
             table_ingr_clone.css('display', 'unset');
             table_ingr_clone.insertAfter($('#table_ingr_row'));
             i++;
@@ -298,8 +299,8 @@
             var tag  = $("#word_tag").val();
 
             var table_tag_clone = $('#table_tag_row').clone();
-            table_tag_clone.children("#table_tag_type").val(type).attr('name', 'tags[' + y + ']type');;
-            table_tag_clone.children("#table_tag_name").val(tag).attr('name', 'tags['  + y + ']name');
+            table_tag_clone.children("#table_tag_type").val(type).attr('name', 'tags[' + y + '][type]');;
+            table_tag_clone.children("#table_tag_name").val(tag).attr('name', 'tags['  + y + '][name]');
 
             table_tag_clone.css('display', 'unset');
             table_tag_clone.insertAfter($('#table_tag_row'));

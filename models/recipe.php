@@ -45,7 +45,7 @@ class Recipe
 
     public function  create () {
         $mysql = Mysql::getInstance();
-        $sql = "INSERT INTO Recipe (name, authorName, authorEmail) VALUES ('$this->_name', '$this->_authorName', '$this->_authorEmail')";
+        $sql = "INSERT INTO Recipe (name, authorName, authorEmail, pictureId) VALUES ('$this->_name', '$this->_authorName', '$this->_authorEmail', '$this->_pictureId')";
         $response = null;
         try {
             $res = $mysql->exec($sql);
