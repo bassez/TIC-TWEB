@@ -249,3 +249,34 @@ p.copyright {
     margin-left: auto;
     margin-right:auto;
 }
+
+#menu_1{
+    width: 100%;
+    text-align: center;
+    background-color: #F47321;
+    color: #F47321;
+    line-height: 1.6;
+    margin:0;
+    border-color: white;
+    height:45px;
+}
+#menu_2{
+    width: 100%;
+    text-align: center;
+    background-color: transparent;
+    color: #F47321;
+    line-height: 1.6;
+    margin:0;
+    border-color: #F47321;
+    height:45px;
+}
+#menu_3{
+    width: 100%;
+    text-align: center;
+    background-color: transparent;
+    color: #F47321;
+    line-height: 1.6;
+    margin:0;
+    border-color: #F47321;
+    height:45px;
+}

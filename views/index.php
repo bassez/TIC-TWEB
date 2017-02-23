@@ -68,34 +68,15 @@
             </div>
             <!-- /.navbar-collapse -->
         </div>
-        <div id="add-box" style="
-    background-color: #f8f8f8;
-    display: none;
-
-">
+        <div id="add-box" style="background-color: #f8f8f8;display: none;">
             <div id="create">
                 <div class="row">
-                    <div class="col-lg-12" style="height:10%;display: flex">
-                        <div class="col-lg-4" style="height:100%;display: flex;padding: 0;">
-                            <h3 style="width: 100%;text-align: center;
-                            background-color:darkred;
-                            color: darkorange;
-                            line-height: 1.6;margin:0">Composez</h3>
-                        </div>
-                        <div class="col-lg-4" style="height:100%;display: flex;padding: 0;">
-                            <h3 style="width: 100%;
-                            text-align: center;background-color:darkred;color: darkorange;line-height: 1.6;margin:0">Préparez</h3>
-                        </div>
-                        <div class="col-lg-4" style="height:100%;display: flex;padding: 0;">
-                            <h3 style="width: 100%;
-                            text-align: center;background-color:darkred;color: darkorange;line-height: 1.6;margin:0">Finalisez !</h3>
-                        </div>
-                    </div>
                     <div class="col-lg-12" style="height:90%;display: flex;">
 
 
                         <form method="POST" enctype="multipart/form-data" action="index.php?controller=recipe&action=create">
-                       <div class="col-lg-4" style="height:100%;padding: 0;">
+                       <div id="hover1" class="col-lg-4" style="height:100%;padding: 0;">
+                           <h3 id="menu_1">Composez</h3>
                             <div class="col-lg-12" style="color: #f47321;height: 40%;padding-top: 10%">
                                 <h3 style="margin-left: auto;margin-right: auto;width: 100%;">
                                     <i style="margin-left: 31%" class="fa fa-cart-plus" aria-hidden="true"></i> Ingrédients</h3>
@@ -105,7 +86,7 @@
                                             <input id="quantity_ingr" type="number" class="form-control" placeholder="0">
                                         </div>
                                     </div>
-                                    <select id="unit_ingr"  class="selectpicker">
+                                    <select id="unit_ingr" class="selectpicker">
                                         <option value="Grammes">gramme(s)</option>
                                         <option value="Kilogrammes">kilogramme(s)</option>
                                         <option value="Millilitres">millilitre(s)</option>
@@ -149,7 +130,8 @@
 
 
 <!--                        PREPARER PREPARER PREPARER PREPARER PREPARER PREPARER PREPARER PREPARER PREPARER PREPARER PREPARER PREPARER-->
-                        <div class="col-lg-4" style="height:100%;padding: 0">
+                       <div id="hover2" class="col-lg-4" style="height:100%;padding: 0">
+                            <h3 id="menu_2">Preparez</h3>
                             <div class="col-lg-12" style="padding-top:20px;height: 90%;border-right: solid 1px;border-left: solid 1px;border-color:darkorange;overflow: scroll;overflow-x: hidden;overflow:overlay">
 
                                 <div id="etape">
@@ -162,89 +144,100 @@
                                 </div>
 
                             </div>
-                            <div class="col-lg-12" style="background-color:red;border-radius:3px;height: 10%;">
+                            <div class="col-lg-12" style="border-radius:3px;height: 10%;">
                                 <h4 id="add_step" style="line-height: 1;float: right;">Ajouter une étape<i class="fa fa-pencil" aria-hidden="true" style="margin-left: 7px;float: right;bottom: 1px;line-height: 1;color:darkorange"></i></h4>
                             </div>
-                        </div>
+                       </div>
 
 <!--                         FINALISEZ FINALISEZ FINALISEZ FINALISEZ FINALISEZ FINALISEZ FINALISEZ FINALISEZ FINALISEZ FINALISEZ FINALISEZ-->
-                        <div id="info_recipe" class="col-lg-4" style="height:100%;padding: 0;overflow: scroll;overflow-x: hidden;">
-                            <div class="col-lg-12" style="margin-top: 20px">
-                                <div class="col-lg-6">
-                                    <div class="col-lg-12 input-group">
-                                        <input name="author[name]" type="text" class="form-control" placeholder="Auteur">
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="col-lg-12 input-group">
-                                        <input name="recipe[name]" type="text" class="form-control" placeholder="Nom de la recette">
-                                    </div>
-                                </div>
 
-                                <div class="col-lg-12" style="margin-top: 10px;margin-bottom: 10px">
-                                    <div class="col-lg-12 input-group">
-                                        <input name="author[mail]" type="text" class="form-control" placeholder="Email">
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="col-lg-12 input-group">
-                                        <input name="recipe[difficulty] "type="text" class="form-control" placeholder="Difficulté">
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="col-lg-12 input-group">
-                                        <input name="recipe[time]" type="number" class="form-control" placeholder="Tps en minutes">
-                                    </div>
-                                </div>
-                                <div class="col-lg-12">
-                                    <div class="col-lg-12 input-group">
-                                        <input name="recipe_pic" type="file" class="form-control" placeholder="Photo">
-                                    </div>
-                                </div>
-                            </div>
 
-                            <div id="content_recipe" class="col-lg-12">
-                                <h4 style="margin: 0;margin-left: 17px;margin-top: 20px;margin-bottom: 10px">Recapitulatif :</h4>
-                                <div class="col-lg-12" >
+                        <div id="hover3" class="col-lg-4" style="height:100%;padding: 0;">
+                            <h3 id="menu_3">Finalisez</h3>
+                            <div class="col-lg-12" style="height: 90%;overflow: scroll; overflow-x: hidden">
+                                <div class="col-lg-12" style="margin-top: 20px;">
 
-                                    <div class="panel panel-default">
-                                        <div class="panel-heading">
-                                            <h3 class="panel-title">Ingredient</h3>
+                                    <div class="col-lg-6">
+                                        <div class="col-lg-12 input-group">
+                                            <input name="author[name]" type="text" class="form-control" placeholder="Auteur">
                                         </div>
-                                            <table id="table_ingr" class="table">
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="col-lg-12 input-group">
+                                            <input name="recipe[name]" type="text" class="form-control" placeholder="Nom de la recette">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-12" style="margin-top: 10px;margin-bottom: 10px">
+                                        <div class="col-lg-12 input-group">
+                                            <input name="author[mail]" type="text" class="form-control" placeholder="Email">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="col-lg-12 input-group">
+                                            <input name="recipe[difficulty] "type="text" class="form-control" placeholder="Difficulté">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="col-lg-12 input-group">
+                                            <input name="recipe[time]" type="number" class="form-control" placeholder="Tps en minutes">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="col-lg-12 input-group">
+                                            <input name="recipe_pic" type="file" class="form-control" placeholder="Photo">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div id="content_recipe" class="col-lg-12">
+                                    <h4 style="margin: 0;margin-left: 17px;margin-top: 20px;margin-bottom: 10px">Recapitulatif :</h4>
+                                    <div class="col-lg-12" >
+
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                <h3 class="panel-title">Ingredient</h3>
+                                            </div>
+                                                <table id="table_ingr" class="table">
+                                                    <tbody>
+                                                    <div id="table_ingr_row" style="display: none">
+                                                        <input name="" id="table_ingr_quant" type="text" style="padding-left: 35px;border: none;width: 100px" readonly>
+                                                        <input name="" id="table_ingr_unit"  type="text" style="border: none;width: 150px" readonly>
+                                                        <input name="" id="table_ingr_name"  type="text" style="border: none;width: 100px" readonly>
+                                                    </div>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-lg-12">
+
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                <h3 class="panel-title">Mot-clés</h3>
+                                            </div>
+                                            <table id="table_tag" class="table">
                                                 <tbody>
-                                                <div id="table_ingr_row" style="display: none">
-                                                    <input name="" id="table_ingr_quant" type="text" style="padding-left: 35px;border: none;width: 100px" readonly>
-                                                    <input name="" id="table_ingr_unit"  type="text" style="border: none;width: 150px" readonly>
-                                                    <input name="" id="table_ingr_name"  type="text" style="border: none;width: 100px" readonly>
-                                                </div>
+                                                    <div id="table_tag_row" style="display: none">
+                                                        <input name="tags[0][type]" id="table_tag_type" type="text" style="margin-left: 20px;border: none;width: 100px" readonly>
+                                                        <input name="tags[0][name]"id="table_tag_name" type="text" style="border: none;width: 160px" readonly>
+                                                    </div>
                                                 </tbody>
                                             </table>
-                                    </div>
-
-                                </div>
-                                <div class="col-lg-12">
-
-                                    <div class="panel panel-default">
-                                        <div class="panel-heading">
-                                            <h3 class="panel-title">Mot-clés</h3>
                                         </div>
-                                        <table id="table_tag" class="table">
-                                            <tbody>
-                                                <div id="table_tag_row" style="display: none">
-                                                    <input name="tags[0][type]" id="table_tag_type" type="text" style="margin-left: 20px;border: none;width: 100px" readonly>
-                                                    <input name="tags[0][name]"id="table_tag_name" type="text" style="border: none;width: 260px" readonly>
-                                                </div>
-                                            </tbody>
-                                        </table>
+
                                     </div>
+
 
                                 </div>
                                 <div class="col-lg-3">
-                                    <input class="form-control" type="submit"><!-- onclick="--><?// create_recipe(); ?><!--"-->
-                                </div>
 
+                                </div>
                             </div>
+                            <div class="col-lg-4" style="float: right;">
+                                <input style="background-color: #F47321;color: white;" class="form-control" type="submit"><!-- onclick="--><?// create_recipe(); ?><!--"-->
+                            </div>
+                            
                         </div>
                         </form>
 
@@ -277,7 +270,7 @@
 
 
             }
-        })
+        });
         var i=0;
         var y=0;
         var z=0;
@@ -296,7 +289,7 @@
             table_ingr_clone.insertAfter($('#table_ingr_row'));
             i++;
 
-        })
+        });
 
         $("#send_tag").click(function () {
 
@@ -310,11 +303,10 @@
             table_tag_clone.css('display', 'unset');
             table_tag_clone.insertAfter($('#table_tag_row'));
             y++;
-        })
+        });
 
 
         $("#add_step").click(function () {
-            console.log("==============================1");
 
             var tag  = $("#comment").clone();
             tag.val("");
@@ -323,37 +315,29 @@
             else
                 $("#comment").parent().append(tag.attr('id', '#comment' +z).attr('name', 'step[' + z + ']value'));//.insertAfter($('#comment'+ (z-1)));
             z++;
-        })
+        });
 
+        $("#hover1").hover(function(){
+            console.log("====");
+            $("#menu_1").css("background-color", "#F47321").css("color", "white");
+            $("#menu_2").css("background-color", "transparent").css("color", "#F47321");
+            $("#menu_3").css("background-color", "transparent").css("color", "#F47321");
+        });
 
+        $("#hover2").hover(function(){
+            console.log("====");
+            $("#menu_2").css("background-color", "#F47321").css("color", "white");
+            $("#menu_1").css("background-color", "transparent").css("color", "#F47321");
+            $("#menu_3").css("background-color", "transparent").css("color", "#F47321");
+        });
+        $("#hover3").hover(function(){
+            console.log("====");
 
-//        $("#add_ingr").click(function () {
-//
-//
-//            var clone = $('.add_input'+ i).clone();
-//            i++;
-//            y= i-1;
-//            clone.children("#name").attr("name", "ingredients[" + i + "][name]");
-//            clone.children("#quantity").attr("name", "ingredients[" + i + "][quantity]");
-//            clone.children("#unite").attr("name", "ingredients[" + i + "][unite]");
-//            clone.attr("class", "add_input"+ i);
-//            clone.insertAfter($('.add_input' +y));
-//
-//
-//        })
-//
-//         $("#add_tag").click(function () {
-//
-//            var clone = $('.add_tag'+ x).clone();
-//            x++;
-//            z= x-1;
-//            clone.children("#tagtype").attr("name", "tags[" + x + "][type]");
-//            clone.children("#tagname").attr("name", "tags[" + x + "][name]");
-//            clone.attr("class", "add_tag"+ x);
-//            clone.insertAfter($('.add_tag' +z));
-//
-//
-//        })
+            $("#menu_3").css("background-color", "#F47321").css("color", "white");
+            $("#menu_2").css("background-color", "transparent").css("color", "#F47321");
+            $("#menu_1").css("background-color", "transparent").css("color", "#F47321");
+        });
+
 
 
     </script>

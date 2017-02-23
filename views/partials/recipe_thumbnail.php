@@ -26,7 +26,7 @@
             </ul>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-7 excerpet">
-            <h3><a <? echo 'href="http://127.0.0.1/index.php?controller=recipe&action=details&id='. $nrid .'" title="">'; echo $nr->getName() ?></a></h3>
+            <h3><a <? echo 'href="index.php?controller=recipe&action=details&id='. $nrid .'" title="">'; echo $nr->getName() ?></a></h3>
             <span class="label label-danger">Danger</span> <span class="label label-danger">Danger</span>
             <h5>Ingrédients : </h5>
             <?php foreach ($nr->getIngredients() as $ingredient) {
