@@ -8,10 +8,18 @@
 
             <? $path = $GLOBALS["uploaddir"] . $datas->getPictureId();?>
             <div class="col-lg-12">
-                <?
-//                    foreach ($datas->getTags() as $tag) {
-//                        echo '<span class="label label-info"> ' . $tag->getTagName() . '</span>';
-//                    }
+                <?php
+
+                foreach ($nr->getTags() as $tag) {
+                    $colors = ["Goût" => "danger", "Origine" => "info", "Type" => "warning"];
+                    $color = "danger";
+                    if (key_exists($tag->getTag(), $colors)) {
+                        $color = $colors[$tag->getTag()];
+                    }
+                    echo '<span class="label label-'.$color.'">'.$tag->getValue(). '</span>';
+
+
+                }
                 ?>
             </div>
 
