@@ -139,7 +139,7 @@
                                         <h5 style="margin: 0;margin-left: 3px;">Etapes</h5>
                                     </div>
                                     <div class="col-lg-12" style="height: 36%;margin-bottom: 15px">
-                                        <textarea name="step[0]value" class="form-control" rows="5" id="comment" style="resize: none;margin-bottom: 15px"></textarea>
+                                        <textarea name="steps[0][value]" class="form-control" rows="5" id="comment" style="resize: none;margin-bottom: 15px"></textarea>
                                     </div>
                                 </div>
 
@@ -311,9 +311,9 @@
             var tag  = $("#comment").clone();
             tag.val("");
             if(z == 0)
-                tag.attr('id', '#comment0').attr('name', 'step[' + 1 + ']value').insertAfter($('#comment'));
+                tag.attr('id', '#comment0').attr('name', 'steps[' + 1 + '][value]').insertAfter($('#comment'));
             else
-                $("#comment").parent().append(tag.attr('id', '#comment' +z).attr('name', 'step[' + z + ']value'));//.insertAfter($('#comment'+ (z-1)));
+                $("#comment").parent().append(tag.attr('id', '#comment' +z).attr('name', 'steps[' + z + '][value]'));//.insertAfter($('#comment'+ (z-1)));
             z++;
         });
 

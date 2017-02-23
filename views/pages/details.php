@@ -65,11 +65,12 @@
 
                     <ul>
                         <?
-//                        $w = 0;
-//                        foreach ($datas->getSteps() as $step) {
-//                            echo '<li style="margin-top: 15px">Etape ' . $w . '</li><ul>';
-//                            echo '<li><span> ' . $step->getStep() . '</span></li></ul>';
-//                        }
+                        $w = 1;
+                        foreach ($datas->getSteps() as $step) {
+                            echo '<li style="margin-top: 15px">Etape ' . $w . '</li><ul>';
+                            echo '<li><span> ' . $step->getValue() . '</span></li></ul>';
+                            $w++;
+                        }
                         ?>
                     </ul>
                 </div>

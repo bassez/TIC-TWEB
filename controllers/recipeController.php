@@ -4,6 +4,7 @@ class recipeController
 {
     public function create()
     {
+        require_once('models/step.php');
         require_once('models/tag.php');
         require_once('models/recipe.php');
         require_once('models/ingredient.php');
@@ -24,6 +25,9 @@ class recipeController
             foreach ($_POST["tags"] as $tag)
                 $hey->addTag(new Tag($tag["type"], $tag["name"]));
 
+            foreach ($_POST["steps"] as $step)
+                $hey->addStep(new Step($step["value"]));
+
 
             echo $hey->create()[2];
             $mail = new Mail($_POST["author"]["mail"],
@@ -39,6 +43,7 @@ class recipeController
 
     public function details()
     {
+        require_once('models/step.php');
         require_once('models/tag.php');
         require_once('models/recipe.php');
         require_once('models/ingredient.php');

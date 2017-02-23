@@ -20,6 +20,7 @@ class Recipe
         $this->_pictureId = "default_picture";
         $this->_ingredients = [];
         $this->_tags = [];
+        $this->_steps = [];
 
         $this->_cooking_time = $_cooking_time;
         $this->_difficulty = $_difficulty;
@@ -29,6 +30,7 @@ class Recipe
         $rid = $sql_recipe["id"];
         $ireq = $mysql->query("SELECT * FROM Ingredient WHERE recipeId='$rid';");
         $treq = $mysql->query("SELECT * FROM Tag WHERE recipeId='$rid';");
+        $sreq = $mysql->query("SELECT * FROM Step WHERE recipeId='$rid';");
 
         $new_recipe = new Recipe($sql_recipe["name"], $sql_recipe["authorName"], $sql_recipe["authorEmail"], $sql_recipe["cooking_time"] , $sql_recipe["difficulty"]);
         $new_recipe->setCreationDate(date('d/m/Y',strtotime($sql_recipe["creationDate"])));
@@ -47,6 +49,11 @@ class Recipe
             $new_recipe->addTag($in);
         }
 
+        foreach ($treq->fetchAll() as $step) {
+            $in = new Step($step["value"]);
+            $in->setId($step["id"])->setRecipeId($step["recipeId"]);
+            $new_recipe->addStep($in);
+        }
         //print_r($new_recipe);
 
         return $new_recipe;
@@ -138,6 +145,10 @@ class Recipe
             foreach ($this->_tags as $tag) {
                 $tag->setRecipeId($this->_id);
                 echo $tag->create()[2];
+            }
+            foreach ($this->_steps as $step) {
+                $step->setRecipeId($this->_id);
+                echo $step->create()[2];
             }
             $response = ["success", "Succes", "Recipe $this->_id successfully created !"];
         } catch (PDOException $Exception) {
@@ -270,9 +281,9 @@ class Recipe
     }
 
     /**
-     * @param Ingredient $ingredient
-     * @return Recipe
-     */
+ * @param Ingredient $ingredient
+ * @return Recipe
+ */
     public function addIngredient($ingredient)
     {
         array_push($this->_ingredients, $ingredient);
@@ -285,6 +296,24 @@ class Recipe
     public function getIngredients()
     {
         return $this->_ingredients;
+    }
+
+    /**
+     * @param Step $step
+     * @return Recipe
+     */
+    public function addStep($step)
+    {
+        array_push($this->_steps, $step);
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getSteps()
+    {
+        return $this->_steps;
     }
 
     /**

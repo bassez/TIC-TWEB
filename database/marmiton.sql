@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost:3306
--- Generation Time: Feb 22, 2017 at 09:19 PM
+-- Generation Time: Feb 23, 2017 at 10:58 PM
 -- Server version: 5.5.42
 -- PHP Version: 7.0.0
 
@@ -26,7 +26,7 @@ CREATE TABLE `Ingredient` (
   `name` varchar(70) NOT NULL,
   `quantity` int(11) NOT NULL,
   `unity` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -43,7 +43,32 @@ CREATE TABLE `Recipe` (
   `pictureId` varchar(100) NOT NULL DEFAULT 'default_picture',
   `cooking_time` int(11) NOT NULL DEFAULT '0',
   `difficulty` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Step`
+--
+
+CREATE TABLE `Step` (
+  `id` int(255) NOT NULL,
+  `value` varchar(5000) NOT NULL,
+  `recipeId` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Tag`
+--
+
+CREATE TABLE `Tag` (
+  `id` int(255) NOT NULL,
+  `tag` varchar(20) NOT NULL,
+  `value` varchar(255) NOT NULL,
+  `recipeId` int(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Indexes for dumped tables
@@ -62,6 +87,18 @@ ALTER TABLE `Recipe`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `Step`
+--
+ALTER TABLE `Step`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `Tag`
+--
+ALTER TABLE `Tag`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -75,3 +112,13 @@ ALTER TABLE `Ingredient`
 --
 ALTER TABLE `Recipe`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `Step`
+--
+ALTER TABLE `Step`
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `Tag`
+--
+ALTER TABLE `Tag`
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
