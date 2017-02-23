@@ -13,7 +13,8 @@ class searchController
         require_once ('models/ingredient.php');
 
         //$name_results = Recipe::getAll();
-        $name_results = Recipe::findByIngredient("tomate, zizi");
+        $query = urldecode($_GET["query"]);
+        $name_results = Recipe::findByIngredient($query);
 
         require_once('views/pages/search.php');
     }

@@ -41,7 +41,7 @@
         <![endif]-->
 
     </head>
-    <body style="background-color: #cccccc">
+    <body style="background-color: #eeeeee">
     <!-- Navigation -->
     <nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
         <div class="container topnav">
@@ -54,7 +54,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand logo" href="#"><i style="color: #F47321" class="fa fa-cutlery"
+                <a class="navbar-brand logo" href="index.php"><i style="color: #F47321" class="fa fa-cutlery"
                                                          aria-hidden="true"></i> armiton</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -95,8 +95,7 @@
 
 
                         <form method="POST" enctype="multipart/form-data" action="index.php?controller=recipe&action=create">
-<!--                         COMPOSER COMPOSER COMPOSER COMPOSER COMPOSER COMPOSER COMPOSER COMPOSER COMPOSER COMPOSER COMPOSER COMPOSER-->
-                        <div class="col-lg-4" style="height:100%;padding: 0;">
+                       <div class="col-lg-4" style="height:100%;padding: 0;">
                             <div class="col-lg-12" style="color: #f47321;height: 40%;padding-top: 10%">
                                 <h3 style="margin-left: auto;margin-right: auto;width: 100%;">
                                     <i style="margin-left: 31%" class="fa fa-cart-plus" aria-hidden="true"></i> Ingrédients</h3>
@@ -266,7 +265,7 @@
                 $("#add-box").css("display", "block");
                 $("#add-icon").removeClass("wheel_reverse");
                 $("#add-icon").addClass("wheel");
-                $("#add-box").animate({"height": "400px"}, 500);
+                $("#add-box").animate({"height": "450px"}, 500);
             }
 
             else {

@@ -7,8 +7,6 @@ class recipeController
         require_once('models/recipe.php');
         require_once('models/ingredient.php');
         require_once('Utils/Mail.php');
-        echo "<br>";
-        print_r($_FILES);
         $uploadfile = $GLOBALS["uploaddir"] . basename($_FILES["recipe_pic"]["name"]);
 
         if (isset($_POST["ingredients"]) && isset($_POST["author"]) && isset($_POST["recipe"])) {
@@ -30,8 +28,8 @@ class recipeController
                 "Recette acceptée !!",
                 "Félicitations, votre recette est desormais accessible à tous sur notre site Maremiton ! <br>A bientôt !");
             $mail->send();
-
-            require_once('views/pages/home.php');
+            $datas = $hey;
+            require_once('views/pages/details.php');
         } else
             require_once('views/pages/error.php');
     }
@@ -42,7 +40,6 @@ class recipeController
         require_once('models/ingredient.php');
 
         $datas = Recipe::findById($_GET["id"]);
-        print_r($datas);
         require_once('views/pages/details.php');
     }
 }

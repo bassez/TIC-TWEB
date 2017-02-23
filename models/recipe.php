@@ -40,12 +40,10 @@ class Recipe
             $sql .= " name LIKE '%" . $ingredient. "%'";
         }
         $sql .= ";";
-        echo $sql;
         $req = $mysql->query($sql);
 
         $list = [];
         foreach ($req->fetchAll() as $ingr) {
-            echo "FOUND AN INGREDIENT, GETTING RECIPE";
             $ingredient = self::findById($ingr["recipeId"]);
             if (!in_array($ingredient, $list))
             array_push($list, $ingredient);
@@ -69,7 +67,6 @@ class Recipe
         $new_recipe->setPictureId($recipe["pictureId"]);
         $new_recipe->setId($rid);
         foreach ($ireq->fetchAll() as $ingredient) {
-            echo "I";
             $in = new Ingredient($ingredient["name"], $ingredient["quantity"], $ingredient["unity"]);
             $in->setId($ingredient["id"])->setRecipeId($ingredient["recipeId"]);
             $new_recipe->addIngredient($in);
@@ -78,8 +75,28 @@ class Recipe
         return $new_recipe;
     }
 
-    public static function getById ($id) {
+    public static function findRecent() {
+        $mysql = Mysql::getInstance();
 
+        $req = $mysql->query("SELECT * FROM Recipe ORDER BY `creationDate` DESC LIMIT 3;");
+
+        $list = [];
+        foreach ($req->fetchAll() as $recipe) {
+            $rid = $recipe["id"];
+            $ireq = $mysql->query("SELECT * FROM Ingredient WHERE recipeId='$rid';");
+            $new_recipe = new Recipe($recipe["name"], $recipe["authorName"], $recipe["authorEmail"], $recipe["cooking_time"] , $recipe["difficulty"]);
+            $new_recipe->setCreationDate(date('d/m/Y',strtotime($recipe["creationDate"])));
+            $new_recipe->setPictureId($recipe["pictureId"]);
+            $new_recipe->setId($rid);
+            foreach ($ireq->fetchAll() as $ingredient) {
+                $in = new Ingredient($ingredient["name"], $ingredient["quantity"], $ingredient["unity"]);
+                $in->setId($ingredient["id"])->setRecipeId($ingredient["recipeId"]);
+                $new_recipe->addIngredient($in);
+            }
+
+            array_push($list, $new_recipe);
+        }
+        return $list;
     }
 
     public static function getAll()
@@ -97,7 +114,6 @@ class Recipe
             $new_recipe->setPictureId($recipe["pictureId"]);
             $new_recipe->setId($rid);
             foreach ($ireq->fetchAll() as $ingredient) {
-                echo "I";
                 $in = new Ingredient($ingredient["name"], $ingredient["quantity"], $ingredient["unity"]);
                 $in->setId($ingredient["id"])->setRecipeId($ingredient["recipeId"]);
                 $new_recipe->addIngredient($in);
@@ -119,7 +135,6 @@ class Recipe
             $this->_id = $mysql->lastInsertId();
             foreach ($this->_ingredients as $ingredient) {
                 $ingredient->setRecipeId($this->_id);
-                var_dump($ingredient->create());
             }
             $response = ["success", "Succes", "Recipe $this->_id successfully created !"];
         } catch (PDOException $Exception) {

@@ -1,59 +1,28 @@
-
-
-
 <!-- Header -->
 <a name="about"></a>
-<div class="intro-header">
-    <div class="container">
+<?php include ("views/partials/banner.php"); ?>
 
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="intro-message">
-                    <h1>Recherchez une recette ... </h1>
 
-                    <input type="text" placeholder="Parmis tout notre stock ..." style="
-    background: transparent;
-    border: none;
-    width: 400px;
-    height: 3em;
-">
-                    <hr style="margin-top:0px" class="intro-divider">
-                    <ul class="list-inline intro-social-buttons">
-
-                        <li>
-                            <a  class="btn btn-default btn-lg"><i class="fa fa-search"></i> <span class="network-name">Chercher !</span></a>
-                        </li>
-
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-    </div>
+<div class="container">
+<!--<div style="padding-top: 10px; color: #777" class="content-section-a">-->
+<!--    <div class="container">-->
+        <h2 style=""><strong class='text-danger'>Retrouvez</strong> les dernières recettes ajoutées !</h2>
+        <?php
+        foreach ($recents as $nr) { ?>
+            <?php include ("views/partials/recipe_thumbnail.php"); ?>
+        <?php } ?>
+</div>
+<!--    </div>-->
     <!-- /.container -->
 
-</div>
-
-
-<a  name="services"></a>
-<div style="padding-top: 10px; color: #777" class="content-section-a">
-
-    <div class="container">
-        <div class="row">
-            <row>
-		<div class="col-lg-12">
-			<div style="text-align: center" class="col-lg-4">waza</div>
-			<div style="text-align: center" class="col-lg-4">waza</div>
-			<div style="text-align: center" class="col-lg-4">waza</div>
-		</div>
-	    </row>
-        </div>
-
-    </div>
-    <!-- /.container -->
-
-</div>
+<!--</div>-->
 <!-- /.content-section-a -->
 
 </div>
 <!-- /.banner -->
+
+<script>
+    $("#search_button").click(function () {
+        window.location.href = "index.php?controller=search&action=search&query=" + encodeURI($("#search_input").val());
+    });
+</script>
