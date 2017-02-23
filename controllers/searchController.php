@@ -20,7 +20,9 @@ class searchController
             require_once('views/pages/search.php');
             return;
         }
-        $name_results = Recipe::findByIngredient($query);
+        $name_results = Recipe::findByName($query);
+        $ingredient_results = Recipe::findByIngredient($query);
+        $tag_results = Recipe::findByTag($query);
 
         require_once('views/pages/search.php');
     }

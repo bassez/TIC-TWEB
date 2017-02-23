@@ -54,7 +54,6 @@ class Recipe
             $in->setId($step["id"])->setRecipeId($step["recipeId"]);
             $new_recipe->addStep($in);
         }
-        //print_r($new_recipe);
 
         return $new_recipe;
     }
@@ -85,11 +84,55 @@ class Recipe
         }
 
         return $list;
-
     }
 
-    public static function findByName($ingredients) {
+    public static function findBytag($ingredients)
+    {
+        $ingredients_parsed = explode(", ", $ingredients);
+        if (count($ingredients_parsed) == 0)
+            return;
+        $mysql = Mysql::getInstance();
 
+        $sql = "SELECT * FROM Tag WHERE ";
+        $i = false;
+        foreach ($ingredients_parsed as $ingredient) {
+            if ($i)
+                $sql .= " OR ";
+            $i = true;
+            $sql .= " value LIKE '%" . $ingredient. "%'";
+        }
+        $sql .= ";";
+        $req = $mysql->query($sql);
+
+        $list = [];
+        foreach ($req->fetchAll() as $ingr) {
+            $ingredient = self::findById($ingr["recipeId"]);
+            if (!in_array($ingredient, $list))
+                array_push($list, $ingredient);
+        }
+
+        return $list;
+    }
+
+    public static function findByName($names) {
+        $mysql = Mysql::getInstance();
+
+        $names_parsed = explode(", ", $names);
+        if (count($names_parsed) == 0)
+            return;
+
+        $list = [];
+        foreach ($names_parsed as $name) {
+            $req = $mysql->query("SELECT * FROM Recipe WHERE name LIKE '%$name%';");
+
+            foreach ($req->fetchAll() as $recipe) {
+                $recipe = self::newRecipeFromSQL ($recipe, $mysql);
+                if (!in_array($recipe, $list))
+                    array_push($list, $recipe);
+            }
+
+        }
+        return $list;
     }
 
     public static function findById($id)
