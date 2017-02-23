@@ -5,7 +5,7 @@
     <h1>Search Results</h1>
     <?php
         $cnr = count($name_results);
-        echo ("<h2 class='lead'><strong class='text-danger'>$cnr</strong> résultats trouvés pour votre recherche <strong class='text-danger'>Lorem</strong></h2>");
+        echo ("<h2 class='lead'><strong class='text-danger'>$cnr</strong> résultats trouvés pour votre recherche '<strong class='text-danger'>$query</strong>'</h2>");
     foreach ($name_results as $nr) {
         include ("views/partials/recipe_thumbnail.php");
      } ?>

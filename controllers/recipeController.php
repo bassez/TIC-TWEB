@@ -17,12 +17,11 @@ class recipeController
                 $hey->setPictureId(basename($_FILES["recipe_pic"]["name"]));
             }
 
-            foreach ($_POST["ingredients"] as $ingredient) {
-                $hey->addIngredient(
-                    new Ingredient($ingredient["name"], $ingredient["quantity"], $ingredient["unit"]));
-            }
+            foreach ($_POST["ingredients"] as $ingredient)
+                $hey->addIngredient(new Ingredient($ingredient["name"], $ingredient["quantity"], $ingredient["unit"]));
 
-            $hey->create();
+
+            echo $hey->create()[2];
             $mail = new Mail($_POST["author"]["mail"],
                 "megasyl20@gmail.com",
                 "Recette acceptée !!",

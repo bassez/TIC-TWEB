@@ -14,6 +14,10 @@ class searchController
 
         //$name_results = Recipe::getAll();
         $query = urldecode($_GET["query"]);
+        if (count($query) > 300) {
+            require_once('views/pages/search.php');
+            return;
+        }
         $name_results = Recipe::findByIngredient($query);
 
         require_once('views/pages/search.php');

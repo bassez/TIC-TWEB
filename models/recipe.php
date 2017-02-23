@@ -53,6 +53,10 @@ class Recipe
 
     }
 
+    public static function findByName($ingredients) {
+
+    }
+
     public static function findById($id)
     {
         $mysql = Mysql::getInstance();
@@ -135,6 +139,7 @@ class Recipe
             $this->_id = $mysql->lastInsertId();
             foreach ($this->_ingredients as $ingredient) {
                 $ingredient->setRecipeId($this->_id);
+                echo $ingredient->create()[2];
             }
             $response = ["success", "Succes", "Recipe $this->_id successfully created !"];
         } catch (PDOException $Exception) {
