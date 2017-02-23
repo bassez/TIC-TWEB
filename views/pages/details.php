@@ -8,9 +8,11 @@
 
             <? $path = $GLOBALS["uploaddir"] . $datas->getPictureId();?>
             <div class="col-lg-12">
-                <span class="label label-info" >tags</span>
-                <span class="label label-warning" >tags</span>
-                <span class="label label-danger" >tags</span>
+                <?
+//                    foreach ($datas->getTags() as $tag) {
+//                        echo '<span class="label label-info"> ' . $tag->getTagName() . '</span>';
+//                    }
+                ?>
             </div>
 
 
@@ -43,26 +45,24 @@
                         <h3 style="color: #F47321">Liste d'ingrédients :</h3>
                         <ul>
                             <?
-                            foreach ($datas->getIngredients() as $ingredient) {
-                                echo '<li><span>' . $ingredient->getQuantity() . '' . $ingredient->getUnit() . ' de ' . $ingredient->getName() . '</span></li>';
-                            }
+                                foreach ($datas->getIngredients() as $ingredient) {
+                                    echo '<li><span>' . $ingredient->getQuantity() . '' . $ingredient->getUnit() . ' de ' . $ingredient->getName() . '</span></li>';
+                                }
                             ?>
                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-6" style="margin-top:15px">
                     <h3 style="color: #F47321" >Préparation :</h3>
+
                     <ul>
-                        <li style="margin-top: 15px;">Etape 1</li>
-                            <ul>
-                                <li><span>Couper 20 grammes de beurre</span></li>
-                                <li><span>Chauffer 20 min</span></li>
-                            </ul>
-                        <li style="margin-top: 15px;">Etape 2</li>
-                            <ul>
-                                <li><span>Ajouter le chocolat dans la poele</span></li>
-                                <li><span>Sucrer le tout</span></li>
-                            </ul>
+                        <?
+//                        $w = 0;
+//                        foreach ($datas->getSteps() as $step) {
+//                            echo '<li style="margin-top: 15px">Etape ' . $w . '</li><ul>';
+//                            echo '<li><span> ' . $step->getStep() . '</span></li></ul>';
+//                        }
+                        ?>
                     </ul>
                 </div>
             </div>
@@ -120,6 +120,5 @@
         theme: 'fontawesome-stars',
         readonly: true
     });
-
 
 </script>
