@@ -3,6 +3,35 @@
 class Tag
 {
     /**
+     * Tag constructor.
+     * @param $_tag
+     * @param $_value
+     * @param $_recipeId
+     */
+    public function __construct($_tag, $_value)
+    {
+        $this->_id = null;
+        $this->_tag = $_tag;
+        $this->_value = $_value;
+        $this->_recipeId = null;
+    }
+
+    public function  create () {
+        $mysql = Mysql::getInstance();
+        $sql = "INSERT INTO Tag (`tag`, `value`, `recipeId`) VALUES ('$this->_tag', '$this->_value', '$this->_recipeId')";
+        $response = null;
+        try {
+            $res = $mysql->exec($sql);
+            $this->_id = $mysql->lastInsertId();
+            $response = ["success", "Succes", "Tag $this->_id successfully created !"];
+        }
+        catch( PDOException $Exception ) {
+            $response = ["danger", "Error", "Error during Tag creation :( <br> MySQL said : " . $Exception->getMessage( )];
+        }
+        return $response;
+    }
+
+    /**
      * @return mixed
      */
     public function getId()

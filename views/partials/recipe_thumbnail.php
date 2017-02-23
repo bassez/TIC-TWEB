@@ -27,7 +27,16 @@
         </div>
         <div class="col-xs-12 col-sm-12 col-md-7 excerpet">
             <h3><a <? echo 'href="index.php?controller=recipe&action=details&id='. $nrid .'" title="">'; echo $nr->getName() ?></a></h3>
-            <span class="label label-danger">Danger</span> <span class="label label-danger">Danger</span>
+            <?php foreach ($nr->getTags() as $tag) {
+                $colors = ["Goût" => "danger", "Origine" => "info", "Type" => "warning"];
+                $color = "danger";
+                if (key_exists($tag->getTag(), $colors)) {
+                    $color = $colors[$tag->getTag()];
+                }
+                echo '<span class="label label-'.$color.'">'.$tag->getValue(). '</span>';
+
+
+            }?>
             <h5>Ingrédients : </h5>
             <?php foreach ($nr->getIngredients() as $ingredient) {
                 echo '<p>-' . $ingredient->getQuantity() . ' ' . $ingredient->getUnit() . ' de ' . $ingredient->getName() . '</p>';
